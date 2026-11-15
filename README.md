@@ -1,132 +1,173 @@
 # IgaraPost
-garaPost is an environmental social network by Vento Norte UEA for NASA Space Apps. It connects Amazon communities' geolocated reports of smoke, fires and floods with satellite data, interactive maps and experimental NISAR image comparisons, making Earth observation more accessible and supporting citizen science.
-Créditos e agradecimentos
+IgaraPost is an environmental social network by Vento Norte UEA for NASA Space Apps. It connects Amazon communities' geolocated reports of smoke, fires and floods with satellite data, interactive maps and experimental NISAR image comparisons, making Earth observation more accessible and supporting citizen science.
+<div align="center">
 
-IgaraPost · Equipe Vento Norte UEA · NASA Space Apps Challenge 2026 · desafio Dancing with the SARs
+<img src="app/public/igarapost-logo.png" alt="IgaraPost logo" width="120" />
+
+# Credits and Acknowledgments
+
+**IgaraPost** · **Vento Norte UEA** Team · NASA Space Apps Challenge 2026 · *Dancing with the SARs* challenge
 
 </div>
 
-O IgaraPost foi criado pela equipe Vento Norte, da Universidade do Estado do Amazonas (UEA). Para chegar até aqui, usamos bibliotecas open source, dados abertos de agências espaciais e científicas e serviços de terceiros. Esta página reconhece cada um deles e deixa claro o que foi desenvolvido pela equipe.
+---
 
-Sumário
-Desenvolvido pela equipe Vento Norte
-Dados e serviços
-Bibliotecas incluídas no app
-Ferramentas de desenvolvimento
-Processamento de dados em Python
-Tipografia, ícones e imagens
-Uso de inteligência artificial
-Desenvolvido pela equipe Vento Norte
+IgaraPost was created by the Vento Norte team from the State University of Amazonas (Universidade do Estado do Amazonas, UEA). To get here, we relied on open-source libraries, open data from space and scientific agencies, and third-party services. This page acknowledges each of them and makes clear what was developed by the team.
 
-O código, as telas, os textos e as artes abaixo foram criados para o IgaraPost e não têm autoria externa. Eles usam as bibliotecas listadas nas próximas seções, mas a lógica, o design e o conteúdo são da equipe.
+## Table of Contents
 
-Parte	O que inclui
-App (app/src/)	Todas as telas (Feed, Mapa, Relatar, Perfil, Explorador NISAR, Como usar, Sobre), componentes, armazenamento no aparelho, fila de sincronização e conexão com o Supabase
-Provedor SARS (app/src/sars/)	Camadas globais, tempo real, regiões e a conferência "fora do radar" dos relatos
-Tradução (app/src/i18n/)	Sistema de idiomas e dicionários da interface
-Banco de dados (supabase/)	Tabelas, regras de segurança (RLS), gatilhos, fotos e moderação
-Servidor (server/)	Servidor das versões até a 8, em Node.js puro, mais Dockerfile e render.yaml
-Pipeline de dados (data-pipeline/)	Scripts de download, recorte e processamento dos dados do INPE, Cemaden, OpenStreetMap e NISAR
-Testes (app/tests/)	Testes de ponta a ponta, Supabase simulado e testes de idiomas
-Android (app/android/)	Personalização do projeto gerado pelo Capacitor: pacote, versões, assinatura, ícones e telas de abertura
-Identidade visual	Logo do IgaraPost, logo da Vento Norte UEA, ícones do app, foto da equipe e arte de fundo "Outro"
-Documentação	README.md e a pasta docs/
-Dados e serviços
+- [Developed by the Vento Norte team](#developed-by-the-vento-norte-team)
+- [Data and services](#data-and-services)
+- [Libraries included in the app](#libraries-included-in-the-app)
+- [Development tools](#development-tools)
+- [Data processing in Python](#data-processing-in-python)
+- [Typography, icons and images](#typography-icons-and-images)
+- [Use of artificial intelligence](#use-of-artificial-intelligence)
 
-O IgaraPost só existe graças a dados abertos. Agradecemos às instituições que os mantêm.
+---
 
-Fonte	Responsável	Uso no IgaraPost
-NASA GIBS	NASA EOSDIS / ESDIS	Camadas de fumaça (MODIS AOD), enchentes (MODIS Flood), imagem do dia (VIIRS) e mapa de fundo Blue Marble Next Generation
-NASA FIRMS	NASA LANCE	Focos de fogo ativo (VIIRS NOAA-20 e Suomi NPP)
-OPERA DSWx-S1	NASA/JPL	Água superficial detectada por radar. Contém dados Copernicus Sentinel modificados (ESA).
-NISAR, via ASF DAAC	NASA/JPL e ISRO	Explorador NISAR no entorno de Manaus
-Programa Queimadas	INPE	Focos de calor no Brasil e atualização em tempo real
-Alerta Secas	Cemaden/MCTI	Limites dos municípios
-OpenStreetMap	© colaboradores do OpenStreetMap (ODbL)	Mapa de ruas, localidades, rios e vias
-MyMemory	Translated srl	Tradução automática dos relatos
-Supabase	Supabase Inc.	Contas, relatos, comentários, fotos e moderação
-Google Maps Platform (opcional)	Google	Fundos "Google Satélite" e "Google Mapa", quando há chave configurada
-Bibliotecas incluídas no app
+## Developed by the Vento Norte team
 
-Estas bibliotecas vão dentro do APK. Todas são open source, e os avisos de copyright seguem as licenças de cada uma.
+The code, screens, texts and artwork listed below were created for IgaraPost and have no external authorship. They use the libraries listed in the following sections, but the logic, design and content belong to the team.
 
-Biblioteca	Versão	Autoria	Licença
-React e React DOM	18.3.1	Meta Platforms, Inc. e colaboradores	MIT
-Leaflet	1.9.4	Volodymyr Agafonkin e colaboradores	BSD-2-Clause
-Capacitor (core e android)	6.2.0	Ionic e colaboradores	MIT
-Apache Cordova Android	10.1.1	Apache Software Foundation	Apache 2.0
-AndroidX / Jetpack	várias	Google / Android Open Source Project	Apache 2.0
-Kotlin e kotlinx.coroutines	1.6.4 (coroutines)	JetBrains e colaboradores	Apache 2.0
-<details> <summary><b>Módulos AndroidX incluídos</b></summary> <br>
-Módulo	Versão
-appcompat · appcompat-resources	1.6.1
-core · core-ktx	1.12.0
-core-splashscreen	1.0.1
-coordinatorlayout	1.2.0
-activity	1.8.0
-fragment	1.6.2
-webkit	1.9.0
-emoji2 · emoji2-views-helper	1.2.0
-savedstate	1.2.1
-startup-runtime	1.1.1
-profileinstaller	1.3.0
-annotation-experimental	1.3.0
-lifecycle, arch-core, loader, viewpager, drawerlayout, customview, cursoradapter, interpolator, vectordrawable, versionedparcelable, tracing	dependências do AndroidX
+| Part | What it includes |
+|---|---|
+| **App** (`app/src/`) | All screens (Feed, Map, Report, Profile, NISAR Explorer, How to use, About), components, on-device storage, sync queue and the Supabase connection |
+| **SARS provider** (`app/src/sars/`) | Global layers, real-time data, regions and the "off the radar" check for reports |
+| **Translation** (`app/src/i18n/`) | Language system and interface dictionaries |
+| **Database** (`supabase/`) | Tables, security rules (RLS), triggers, photos and moderation |
+| **Server** (`server/`) | Server used up to version 8, written in plain Node.js, plus `Dockerfile` and `render.yaml` |
+| **Data pipeline** (`data-pipeline/`) | Scripts that download, clip and process data from INPE, Cemaden, OpenStreetMap and NISAR |
+| **Tests** (`app/tests/`) | End-to-end tests, simulated Supabase and language tests |
+| **Android** (`app/android/`) | Customization of the Capacitor-generated project: package, versions, signing, icons and splash screens |
+| **Visual identity** | IgaraPost logo, Vento Norte UEA logo, app icons, team photo and the "Other" background artwork |
+| **Documentation** | `README.md` and the `docs/` folder |
+
+---
+
+## Data and services
+
+IgaraPost only exists thanks to open data. We thank the institutions that maintain it.
+
+| Source | Maintainer | Use in IgaraPost |
+|---|---|---|
+| [NASA GIBS](https://earthdata.nasa.gov/gibs) | NASA EOSDIS / ESDIS | Smoke (MODIS AOD), flood (MODIS Flood), daily imagery (VIIRS) layers and the **Blue Marble Next Generation** basemap |
+| [NASA FIRMS](https://firms.modaps.eosdis.nasa.gov/) | NASA LANCE | Active fire detections (VIIRS NOAA-20 and Suomi NPP) |
+| [OPERA DSWx-S1](https://www.jpl.nasa.gov/go/opera) | NASA/JPL | Surface water detected by radar. *Contains modified Copernicus Sentinel data (ESA).* |
+| [NISAR](https://science.nasa.gov/mission/nisar/), via [ASF DAAC](https://search.asf.alaska.edu/) | NASA/JPL and ISRO | NISAR Explorer around Manaus |
+| [Programa Queimadas](https://data.inpe.br/queimadas/dados-abertos/) | INPE | Fire hotspots in Brazil and real-time updates |
+| [Alerta Secas](https://alertasecas.cemaden.gov.br/) | Cemaden/MCTI | Municipal boundaries |
+| [OpenStreetMap](https://www.openstreetmap.org/copyright) | © OpenStreetMap contributors (ODbL) | Street map, places, rivers and roads |
+| [MyMemory](https://mymemory.translated.net/) | Translated srl | Automatic translation of reports |
+| [Supabase](https://supabase.com/) | Supabase Inc. | Accounts, reports, comments, photos and moderation |
+| [Google Maps Platform](https://developers.google.com/maps) *(optional)* | Google | "Google Satellite" and "Google Map" basemaps, when an API key is configured |
+
+---
+
+## Libraries included in the app
+
+These libraries are bundled in the APK. All of them are open source, and copyright notices follow each one's license.
+
+| Library | Version | Authors | License |
+|---|---|---|---|
+| [React](https://react.dev/) and React DOM | 18.3.1 | Meta Platforms, Inc. and contributors | MIT |
+| [Leaflet](https://leafletjs.com/) | 1.9.4 | Volodymyr Agafonkin and contributors | BSD-2-Clause |
+| [Capacitor](https://capacitorjs.com/) (core and android) | 6.2.0 | Ionic and contributors | MIT |
+| [Apache Cordova Android](https://cordova.apache.org/) | 10.1.1 | Apache Software Foundation | Apache 2.0 |
+| [AndroidX / Jetpack](https://developer.android.com/jetpack/androidx) | various | Google / Android Open Source Project | Apache 2.0 |
+| [Kotlin](https://kotlinlang.org/) and [kotlinx.coroutines](https://github.com/Kotlin/kotlinx.coroutines) | 1.6.4 (coroutines) | JetBrains and contributors | Apache 2.0 |
+
+<details>
+<summary><b>Included AndroidX modules</b></summary>
+
+<br>
+
+| Module | Version |
+|---|---|
+| appcompat · appcompat-resources | 1.6.1 |
+| core · core-ktx | 1.12.0 |
+| core-splashscreen | 1.0.1 |
+| coordinatorlayout | 1.2.0 |
+| activity | 1.8.0 |
+| fragment | 1.6.2 |
+| webkit | 1.9.0 |
+| emoji2 · emoji2-views-helper | 1.2.0 |
+| savedstate | 1.2.1 |
+| startup-runtime | 1.1.1 |
+| profileinstaller | 1.3.0 |
+| annotation-experimental | 1.3.0 |
+| lifecycle, arch-core, loader, viewpager, drawerlayout, customview, cursoradapter, interpolator, vectordrawable, versionedparcelable, tracing | AndroidX dependencies |
+
 </details>
-Ferramentas de desenvolvimento
 
-Estas ferramentas foram usadas para construir e testar o projeto e não vão dentro do APK.
+---
 
-Ferramenta	Autoria	Licença
-Vite 5.4, com esbuild e Rollup	Evan You, Evan Wallace, Rich Harris e colaboradores	MIT
-TypeScript 5.5	Microsoft	Apache 2.0
-DefinitelyTyped (@types/react, @types/leaflet)	Comunidade	MIT
-Capacitor CLI 6.2	Ionic	MIT
-Gradle e Android Gradle Plugin 8.2	Gradle Inc. e Google	Apache 2.0
-Playwright	Microsoft	Apache 2.0
-tsx	Hiroki Osame e colaboradores	MIT
-Node.js 22	OpenJS Foundation	MIT
-PostgreSQL (via Supabase)	PostgreSQL Global Development Group	PostgreSQL License
-Processamento de dados em Python
+## Development tools
 
-Bibliotecas usadas em data-pipeline/ para baixar e preparar os dados de satélite.
+These tools were used to build and test the project and are not bundled in the APK.
 
-Biblioteca	Autoria	Licença
-NumPy	NumPy Developers	BSD-3-Clause
-SciPy	SciPy Developers	BSD-3-Clause
-Pillow	Jeffrey A. Clark e colaboradores	MIT-CMU
-h5py	Andrew Collette e colaboradores	BSD-3-Clause
-Rasterio	Mapbox e colaboradores	BSD-3-Clause
-pyproj	pyproj contributors	MIT
-Shapely	Sean Gillies e colaboradores	BSD-3-Clause
-earthaccess	NSIDC e comunidade earthaccess	MIT
-Tipografia, ícones e imagens
+| Tool | Authors | License |
+|---|---|---|
+| [Vite](https://vitejs.dev/) 5.4, with [esbuild](https://esbuild.github.io/) and [Rollup](https://rollupjs.org/) | Evan You, Evan Wallace, Rich Harris and contributors | MIT |
+| [TypeScript](https://www.typescriptlang.org/) 5.5 | Microsoft | Apache 2.0 |
+| [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped) (`@types/react`, `@types/leaflet`) | Community | MIT |
+| [Capacitor CLI](https://capacitorjs.com/) 6.2 | Ionic | MIT |
+| [Gradle](https://gradle.org/) and [Android Gradle Plugin](https://developer.android.com/build) 8.2 | Gradle Inc. and Google | Apache 2.0 |
+| [Playwright](https://playwright.dev/) | Microsoft | Apache 2.0 |
+| [tsx](https://github.com/privatenumber/tsx) | Hiroki Osame and contributors | MIT |
+| [Node.js](https://nodejs.org/) 22 | OpenJS Foundation | MIT |
+| [PostgreSQL](https://www.postgresql.org/) (via Supabase) | PostgreSQL Global Development Group | PostgreSQL License |
 
-Fontes, carregadas pelo Google Fonts e todas sob a SIL Open Font License 1.1:
+---
 
-Bricolage Grotesque, de Mathieu Triay
-Inter, de Rasmus Andersson
-IBM Plex Mono, da IBM
+## Data processing in Python
 
-Ícones: desenhados pela equipe em SVG. O ícone de sino vem do Lucide (licença ISC).
+Libraries used in `data-pipeline/` to download and prepare the satellite data.
 
-Imagens de fundo das publicações:
+| Library | Authors | License |
+|---|---|---|
+| [NumPy](https://numpy.org/) | NumPy Developers | BSD-3-Clause |
+| [SciPy](https://scipy.org/) | SciPy Developers | BSD-3-Clause |
+| [Pillow](https://python-pillow.org/) | Jeffrey A. Clark and contributors | MIT-CMU |
+| [h5py](https://www.h5py.org/) | Andrew Collette and contributors | BSD-3-Clause |
+| [Rasterio](https://rasterio.readthedocs.io/) | Mapbox and contributors | BSD-3-Clause |
+| [pyproj](https://pyproj4.github.io/pyproj/) | pyproj contributors | MIT |
+| [Shapely](https://shapely.readthedocs.io/) | Sean Gillies and contributors | BSD-3-Clause |
+| [earthaccess](https://earthaccess.readthedocs.io/) | NSIDC and the earthaccess community | MIT |
 
-Imagem	Autoria
-Queimada (brigadista em incêndio)	[autor e veículo a confirmar]
-Fumaça (Teatro Amazonas encoberto)	[autor e veículo a confirmar]
-Enchente (rua alagada em Manaus)	[autor e veículo a confirmar]
-Outro (arte do IgaraPost)	Equipe Vento Norte
+---
 
-Mapa de fundo offline: NASA Blue Marble Next Generation, via GIBS.
+## Typography, icons and images
 
+**Fonts**, loaded from [Google Fonts](https://fonts.google.com/), all under the SIL Open Font License 1.1:
 
-Uso de inteligência artificial
+- **Bricolage Grotesque**, by Mathieu Triay
+- **Inter**, by Rasmus Andersson
+- **IBM Plex Mono**, by IBM
 
-Seguindo as regras do NASA Space Apps Challenge, declaramos que o IgaraPost foi desenvolvido pela equipe Vento Norte UEA com o auxílio da IA Claude (Anthropic) na revisão, teste do código. A codificação decisões de projeto, a identidade visual e a validação final foram da equipe.
+**Icons:** drawn by the team in SVG. The bell icon comes from [Lucide](https://lucide.dev/) (ISC license).
+
+**Post background images:**
+
+| Image | Author |
+|---|---|
+| Wildfire (firefighter in a fire) | *[author and outlet to be confirmed]* |
+| Smoke (Amazon Theatre covered in smoke) | *[author and outlet to be confirmed]* |
+| Flood (flooded street in Manaus) | *[author and outlet to be confirmed]* |
+| Other (IgaraPost artwork) | Vento Norte team |
+
+**Offline basemap:** NASA Blue Marble Next Generation, via GIBS.
+
+---
+
+## Use of artificial intelligence
+
+In accordance with the NASA Space Apps Challenge rules, we declare that IgaraPost was developed by the Vento Norte UEA team **with the assistance of the AI Claude (Anthropic)** in reviewing and testing the code. The coding, design decisions, visual identity and final validation were done by the team.
+
+---
 
 <div align="center">
 
-Feito em Manaus, Amazonas, pela Equipe Vento Norte · UEA
+Made in Manaus, Amazonas, by the **Vento Norte Team · UEA**
 
 </div>
