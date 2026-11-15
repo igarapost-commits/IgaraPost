@@ -1,6 +1,5 @@
 # IgaraPost
 garaPost is an environmental social network by Vento Norte UEA for NASA Space Apps. It connects Amazon communities' geolocated reports of smoke, fires and floods with satellite data, interactive maps and experimental NISAR image comparisons, making Earth observation more accessible and supporting citizen science.
-<div align="center"> <img src="app/public/igarapost-logo.png" alt="Logo do IgaraPost" width="120" />
 Créditos e agradecimentos
 
 IgaraPost · Equipe Vento Norte UEA · NASA Space Apps Challenge 2026 · desafio Dancing with the SARs
@@ -17,7 +16,7 @@ Ferramentas de desenvolvimento
 Processamento de dados em Python
 Tipografia, ícones e imagens
 Uso de inteligência artificial
-🚀 Desenvolvido pela equipe Vento Norte
+Desenvolvido pela equipe Vento Norte
 
 O código, as telas, os textos e as artes abaixo foram criados para o IgaraPost e não têm autoria externa. Eles usam as bibliotecas listadas nas próximas seções, mas a lógica, o design e o conteúdo são da equipe.
 
@@ -32,7 +31,7 @@ Testes (app/tests/)	Testes de ponta a ponta, Supabase simulado e testes de idiom
 Android (app/android/)	Personalização do projeto gerado pelo Capacitor: pacote, versões, assinatura, ícones e telas de abertura
 Identidade visual	Logo do IgaraPost, logo da Vento Norte UEA, ícones do app, foto da equipe e arte de fundo "Outro"
 Documentação	README.md e a pasta docs/
-🛰️ Dados e serviços
+Dados e serviços
 
 O IgaraPost só existe graças a dados abertos. Agradecemos às instituições que os mantêm.
 
@@ -47,7 +46,7 @@ OpenStreetMap	© colaboradores do OpenStreetMap (ODbL)	Mapa de ruas, localidades
 MyMemory	Translated srl	Tradução automática dos relatos
 Supabase	Supabase Inc.	Contas, relatos, comentários, fotos e moderação
 Google Maps Platform (opcional)	Google	Fundos "Google Satélite" e "Google Mapa", quando há chave configurada
-📦 Bibliotecas incluídas no app
+Bibliotecas incluídas no app
 
 Estas bibliotecas vão dentro do APK. Todas são open source, e os avisos de copyright seguem as licenças de cada uma.
 
@@ -74,7 +73,7 @@ profileinstaller	1.3.0
 annotation-experimental	1.3.0
 lifecycle, arch-core, loader, viewpager, drawerlayout, customview, cursoradapter, interpolator, vectordrawable, versionedparcelable, tracing	dependências do AndroidX
 </details>
-🛠️ Ferramentas de desenvolvimento
+Ferramentas de desenvolvimento
 
 Estas ferramentas foram usadas para construir e testar o projeto e não vão dentro do APK.
 
@@ -88,7 +87,7 @@ Playwright	Microsoft	Apache 2.0
 tsx	Hiroki Osame e colaboradores	MIT
 Node.js 22	OpenJS Foundation	MIT
 PostgreSQL (via Supabase)	PostgreSQL Global Development Group	PostgreSQL License
-🐍 Processamento de dados em Python
+Processamento de dados em Python
 
 Bibliotecas usadas em data-pipeline/ para baixar e preparar os dados de satélite.
 
@@ -101,7 +100,7 @@ Rasterio	Mapbox e colaboradores	BSD-3-Clause
 pyproj	pyproj contributors	MIT
 Shapely	Sean Gillies e colaboradores	BSD-3-Clause
 earthaccess	NSIDC e comunidade earthaccess	MIT
-🎨 Tipografia, ícones e imagens
+Tipografia, ícones e imagens
 
 Fontes, carregadas pelo Google Fonts e todas sob a SIL Open Font License 1.1:
 
@@ -121,12 +120,13 @@ Outro (arte do IgaraPost)	Equipe Vento Norte
 
 Mapa de fundo offline: NASA Blue Marble Next Generation, via GIBS.
 
-🤖 Uso de inteligência artificial
 
-Seguindo as regras do NASA Space Apps Challenge, declaramos que o IgaraPost foi desenvolvido pela equipe Vento Norte UEA com o auxílio da IA Claude (Anthropic) na escrita, revisão e teste do código e dos scripts de processamento de dados. As decisões de projeto, a identidade visual e a validação final foram da equipe.
+Uso de inteligência artificial
+
+Seguindo as regras do NASA Space Apps Challenge, declaramos que o IgaraPost foi desenvolvido pela equipe Vento Norte UEA com o auxílio da IA Claude (Anthropic) na revisão, teste do código. A codificação decisões de projeto, a identidade visual e a validação final foram da equipe.
 
 <div align="center">
 
-Feito em Manaus, Amazonas, pela Equipe Vento Norte · UEA 🌳🛶
+Feito em Manaus, Amazonas, pela Equipe Vento Norte · UEA
 
 </div>
